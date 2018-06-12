@@ -28,7 +28,13 @@ final class ResponseParser {
             throw NetworkError.emptyBody
         }
         
-        guard let dictArray = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [[String: String]] else {
+        // Be careful about the encoding
+        guard let iso = String(data: data, encoding: .isoLatin1), let utf8Data = iso.data(using: .utf8) else {
+            throw NetworkError.invalidBody
+        }
+        
+        guard let jsonWrapper = try JSONSerialization.jsonObject(with: utf8Data, options: .allowFragments) as? [String: Any],
+            let dictArray = jsonWrapper["rows"] as? [[String: Any]] else {
             throw NetworkError.invalidBody
         }
         
