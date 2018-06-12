@@ -6,7 +6,7 @@
 //  Copyright © 2018 Henry Miao. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 final class ResponseParser {
     static func checkResponse(data: Data?, response: URLResponse?, error: Error?) throws {
@@ -41,5 +41,19 @@ final class ResponseParser {
         return dictArray.map { (dict) -> ImageFeed in
             return ImageFeed(dict: dict)
         }
+    }
+    
+    static func parseImageBody(data: Data?, response: URLResponse?, error: Error?) throws -> UIImage {
+        try checkResponse(data: data, response: response, error: error)
+        
+        guard let data = data else {
+            throw NetworkError.emptyBody
+        }
+        
+        guard let image = UIImage(data: data) else {
+            throw NetworkError.invalidBody
+        }
+        
+        return image
     }
 }

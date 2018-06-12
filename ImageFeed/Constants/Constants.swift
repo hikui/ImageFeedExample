@@ -13,4 +13,12 @@ struct Constants {
         /// URL for picture feed.
         static let feedURL = URL(string: "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json")!
     }
+    
+    struct NotificationName {
+        static let imageLoaded = Notification.Name(rawValue: "imageLoaded")
+    }
+    
+    struct UserInfoKey {
+        static let imageLoadingFeedKey = "imageLoadingFeedKey"
+    }
 }

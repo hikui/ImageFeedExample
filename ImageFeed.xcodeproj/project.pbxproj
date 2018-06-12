@@ -20,6 +20,9 @@
 		466D81F020CFC10600DA89DA /* ResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81EF20CFC10600DA89DA /* ResponseParser.swift */; };
 		466D81F320CFC25200DA89DA /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81F220CFC25200DA89DA /* NetworkError.swift */; };
 		466D81F520CFCAD000DA89DA /* ResponseParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81F420CFCAD000DA89DA /* ResponseParserTests.swift */; };
+		466D81F820CFDBBF00DA89DA /* ImageFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81F720CFDBBF00DA89DA /* ImageFeedCell.swift */; };
+		466D81FA20CFDBCF00DA89DA /* WaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81F920CFDBCF00DA89DA /* WaterfallLayout.swift */; };
+		466D81FC20CFDF0A00DA89DA /* ImageFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81FB20CFDF0A00DA89DA /* ImageFeedViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,9 @@
 		466D81EF20CFC10600DA89DA /* ResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseParser.swift; sourceTree = "<group>"; };
 		466D81F220CFC25200DA89DA /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		466D81F420CFCAD000DA89DA /* ResponseParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseParserTests.swift; sourceTree = "<group>"; };
+		466D81F720CFDBBF00DA89DA /* ImageFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFeedCell.swift; sourceTree = "<group>"; };
+		466D81F920CFDBCF00DA89DA /* WaterfallLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallLayout.swift; sourceTree = "<group>"; };
+		466D81FB20CFDF0A00DA89DA /* ImageFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFeedViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,7 +158,9 @@
 		466D81E620CFB93F00DA89DA /* ImageFeedList */ = {
 			isa = PBXGroup;
 			children = (
+				466D81F620CFDB9900DA89DA /* CollectionView */,
 				466D81E720CFB9AD00DA89DA /* FeedListViewController.swift */,
+				466D81FB20CFDF0A00DA89DA /* ImageFeedViewModel.swift */,
 			);
 			path = ImageFeedList;
 			sourceTree = "<group>";
@@ -179,6 +187,15 @@
 				466D81F220CFC25200DA89DA /* NetworkError.swift */,
 			);
 			path = Errors;
+			sourceTree = "<group>";
+		};
+		466D81F620CFDB9900DA89DA /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				466D81F720CFDBBF00DA89DA /* ImageFeedCell.swift */,
+				466D81F920CFDBCF00DA89DA /* WaterfallLayout.swift */,
+			);
+			path = CollectionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +307,9 @@
 				466D81EB20CFBA8300DA89DA /* ImageDetailsViewController.swift in Sources */,
 				466D81F320CFC25200DA89DA /* NetworkError.swift in Sources */,
 				466D81F020CFC10600DA89DA /* ResponseParser.swift in Sources */,
+				466D81FA20CFDBCF00DA89DA /* WaterfallLayout.swift in Sources */,
+				466D81FC20CFDF0A00DA89DA /* ImageFeedViewModel.swift in Sources */,
+				466D81F820CFDBBF00DA89DA /* ImageFeedCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +473,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MC5L25YZLD;
 				INFOPLIST_FILE = ImageFeed/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -471,6 +492,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MC5L25YZLD;
 				INFOPLIST_FILE = ImageFeed/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
