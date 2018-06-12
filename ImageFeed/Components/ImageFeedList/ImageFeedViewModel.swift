@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ImageFeedViewModelDelegate {
+    func viewModelDidChangeStatus(_ viewModel: ImageFeedViewModel)
+}
+
 class ImageFeedViewModel {
     
     enum LoadingStatus {
@@ -18,8 +22,16 @@ class ImageFeedViewModel {
     }
     
     var imageFeed: ImageFeed
-    var loadingStatus = LoadingStatus.notStarted
+    var loadingStatus = LoadingStatus.notStarted {
+        didSet {
+            DispatchQueue.main.async {
+                self.delegate?.viewModelDidChangeStatus(self)
+            }
+        }
+    }
     var image: UIImage?
+    
+    var delegate: ImageFeedViewModelDelegate?
     
     private var loadingTask: URLSessionTask?
     
@@ -28,10 +40,13 @@ class ImageFeedViewModel {
     }
     
     func loadImage() {
+        if loadingStatus != .notStarted {
+            return
+        }
+        
         loadingStatus = .loading
         guard let urlString = imageFeed.imageHref, let url = URL(string: urlString) else {
             loadingStatus = .failed
-            NotificationCenter.default.post(name: Constants.NotificationName.imageLoaded, object: self)
             return
         }
         
@@ -46,8 +61,6 @@ class ImageFeedViewModel {
             } catch {
                 strongSelf.loadingStatus = .failed
             }
-            
-            NotificationCenter.default.post(name: Constants.NotificationName.imageLoaded, object: self)
         })
         self.loadingTask?.resume()
     }
@@ -56,9 +69,3 @@ class ImageFeedViewModel {
         loadingTask?.cancel()
     }
 }
-
-//extension ImageFeedViewModel: Equatable {
-//    static func == (lhs: ImageFeedViewModel, rhs: ImageFeedViewModel) -> Bool {
-//        
-//    }
-//}
