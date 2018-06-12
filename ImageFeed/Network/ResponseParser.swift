@@ -6,7 +6,7 @@
 //  Copyright © 2018 Henry Miao. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 final class ResponseParser {
     static func checkResponse(data: Data?, response: URLResponse?, error: Error?) throws {
@@ -28,12 +28,32 @@ final class ResponseParser {
             throw NetworkError.emptyBody
         }
         
-        guard let dictArray = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [[String: String]] else {
+        // Be careful about the encoding
+        guard let iso = String(data: data, encoding: .isoLatin1), let utf8Data = iso.data(using: .utf8) else {
+            throw NetworkError.invalidBody
+        }
+        
+        guard let jsonWrapper = try JSONSerialization.jsonObject(with: utf8Data, options: .allowFragments) as? [String: Any],
+            let dictArray = jsonWrapper["rows"] as? [[String: Any]] else {
             throw NetworkError.invalidBody
         }
         
         return dictArray.map { (dict) -> ImageFeed in
             return ImageFeed(dict: dict)
         }
+    }
+    
+    static func parseImageBody(data: Data?, response: URLResponse?, error: Error?) throws -> UIImage {
+        try checkResponse(data: data, response: response, error: error)
+        
+        guard let data = data else {
+            throw NetworkError.emptyBody
+        }
+        
+        guard let image = UIImage(data: data) else {
+            throw NetworkError.invalidBody
+        }
+        
+        return image
     }
 }

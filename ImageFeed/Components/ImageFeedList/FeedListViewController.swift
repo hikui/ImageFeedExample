@@ -10,6 +10,8 @@ import UIKit
 
 class FeedListViewController: UIViewController {
 
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     var feedList = [ImageFeed]() {
         didSet {
             reloadCollectionView()

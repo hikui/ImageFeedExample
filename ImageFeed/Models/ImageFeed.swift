@@ -13,10 +13,10 @@ struct ImageFeed {
     var description: String?
     var imageHref: String?
     
-    init(dict: [String: String]) {
-        self.title = dict["title"]
-        self.description = dict["description"]
-        self.imageHref = dict["imageHref"]
+    init(dict: [String: Any]) {
+        self.title = dict["title"] as? String ?? nil
+        self.description = dict["description"] as? String ?? nil
+        self.imageHref = dict["imageHref"] as? String ?? nil
         
         if title == nil && description == nil && imageHref == nil {
             print("Invalid feed")

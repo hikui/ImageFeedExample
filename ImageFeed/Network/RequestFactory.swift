@@ -13,4 +13,10 @@ class RequestFactory {
                                     completionHandler: @escaping ((Data?, URLResponse?, Error?) -> Void)) -> URLSessionTask {
         return session.dataTask(with: Constants.Networking.feedURL, completionHandler: completionHandler)
     }
+    
+    static func imageBodyRequestTask(session: URLSession,
+                                     imageURL: URL,
+                                     completionHandler: @escaping ((Data?, URLResponse?, Error?) -> Void)) -> URLSessionTask {
+        return session.dataTask(with: imageURL, completionHandler: completionHandler)
+    }
 }
