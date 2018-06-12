@@ -16,6 +16,10 @@
 		466D81E520CFB7DF00DA89DA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81E420CFB7DF00DA89DA /* Constants.swift */; };
 		466D81E820CFB9AD00DA89DA /* FeedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81E720CFB9AD00DA89DA /* FeedListViewController.swift */; };
 		466D81EB20CFBA8300DA89DA /* ImageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81EA20CFBA8300DA89DA /* ImageDetailsViewController.swift */; };
+		466D81EE20CFBBF300DA89DA /* ImageFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81ED20CFBBF300DA89DA /* ImageFeed.swift */; };
+		466D81F020CFC10600DA89DA /* ResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81EF20CFC10600DA89DA /* ResponseParser.swift */; };
+		466D81F320CFC25200DA89DA /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81F220CFC25200DA89DA /* NetworkError.swift */; };
+		466D81F520CFCAD000DA89DA /* ResponseParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81F420CFCAD000DA89DA /* ResponseParserTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +46,10 @@
 		466D81E420CFB7DF00DA89DA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		466D81E720CFB9AD00DA89DA /* FeedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListViewController.swift; sourceTree = "<group>"; };
 		466D81EA20CFBA8300DA89DA /* ImageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailsViewController.swift; sourceTree = "<group>"; };
+		466D81ED20CFBBF300DA89DA /* ImageFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFeed.swift; sourceTree = "<group>"; };
+		466D81EF20CFC10600DA89DA /* ResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseParser.swift; sourceTree = "<group>"; };
+		466D81F220CFC25200DA89DA /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		466D81F420CFCAD000DA89DA /* ResponseParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseParserTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +91,8 @@
 		466D81BB20CFB18100DA89DA /* ImageFeed */ = {
 			isa = PBXGroup;
 			children = (
+				466D81F120CFC1FE00DA89DA /* Errors */,
+				466D81EC20CFBBCF00DA89DA /* Models */,
 				466D81E320CFB7D000DA89DA /* Constants */,
 				466D81DE20CFB50C00DA89DA /* Extensions */,
 				466D81DD20CFB50400DA89DA /* Network */,
@@ -101,6 +111,7 @@
 			children = (
 				466D81D120CFB18300DA89DA /* ImageFeedTests.swift */,
 				466D81D320CFB18300DA89DA /* Info.plist */,
+				466D81F420CFCAD000DA89DA /* ResponseParserTests.swift */,
 			);
 			path = ImageFeedTests;
 			sourceTree = "<group>";
@@ -118,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				466D81E120CFB6EA00DA89DA /* RequestFactory.swift */,
+				466D81EF20CFC10600DA89DA /* ResponseParser.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -151,6 +163,22 @@
 				466D81EA20CFBA8300DA89DA /* ImageDetailsViewController.swift */,
 			);
 			path = ImageDetails;
+			sourceTree = "<group>";
+		};
+		466D81EC20CFBBCF00DA89DA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				466D81ED20CFBBF300DA89DA /* ImageFeed.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		466D81F120CFC1FE00DA89DA /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				466D81F220CFC25200DA89DA /* NetworkError.swift */,
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,10 +283,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				466D81E220CFB6EA00DA89DA /* RequestFactory.swift in Sources */,
+				466D81EE20CFBBF300DA89DA /* ImageFeed.swift in Sources */,
 				466D81E820CFB9AD00DA89DA /* FeedListViewController.swift in Sources */,
 				466D81BD20CFB18100DA89DA /* AppDelegate.swift in Sources */,
 				466D81E520CFB7DF00DA89DA /* Constants.swift in Sources */,
 				466D81EB20CFBA8300DA89DA /* ImageDetailsViewController.swift in Sources */,
+				466D81F320CFC25200DA89DA /* NetworkError.swift in Sources */,
+				466D81F020CFC10600DA89DA /* ResponseParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				466D81D220CFB18300DA89DA /* ImageFeedTests.swift in Sources */,
+				466D81F520CFCAD000DA89DA /* ResponseParserTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

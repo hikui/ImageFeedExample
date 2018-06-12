@@ -9,7 +9,8 @@
 import Foundation
 
 class RequestFactory {
-    static func feedListRequest(session: URLSession) -> URLSessionTask {
-        return session.dataTask(with: Constants.Networking.feedURL)
+    static func feedListRequestTask(session: URLSession,
+                                    completionHandler: @escaping ((Data?, URLResponse?, Error?) -> Void)) -> URLSessionTask {
+        return session.dataTask(with: Constants.Networking.feedURL, completionHandler: completionHandler)
     }
 }

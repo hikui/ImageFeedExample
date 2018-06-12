@@ -10,26 +10,47 @@ import UIKit
 
 class FeedListViewController: UIViewController {
 
+    var feedList = [ImageFeed]() {
+        didSet {
+            reloadCollectionView()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        requestFeedList()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+// Mark: - Actions
+extension FeedListViewController {
+    func displayError(error: Error) {
+        
     }
-    */
+    
+    func reloadCollectionView() {
+        
+    }
+}
 
+// MARK: - Request
+extension FeedListViewController {
+    func requestFeedList() {
+        // This singleton is inevitable
+        let globalURLSession = (UIApplication.shared.delegate as! AppDelegate).globalURLSession
+        let task = RequestFactory.feedListRequestTask(session: globalURLSession) { [weak self] (data, response, error) in
+            guard let strongSelf = self else { return }
+            do {
+                strongSelf.feedList = try ResponseParser.parseFeedList(data: data, response: response, error: error)
+            } catch {
+                strongSelf.displayError(error: error)
+            }
+        }
+        task.resume()
+    }
 }
