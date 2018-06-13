@@ -35,6 +35,14 @@ class FeedListViewController: UIViewController {
         }
         refreshControl.addTarget(self, action: #selector(refreshControlStartRefreshing), for: .valueChanged)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.SegueIdentifier.pushImageDetailsSegue {
+            guard let targetViewController = segue.destination as? ImageDetailsViewController,
+                let cell = sender as? ImageFeedCell else { return }
+            targetViewController.imageFeedVM = cell.viewModel
+        }
+    }
 }
 
 // Mark: - Actions
@@ -113,7 +121,7 @@ extension FeedListViewController: UICollectionViewDelegate, UICollectionViewData
         
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let idx = indexPath.item
         feedList[idx].loadImage()

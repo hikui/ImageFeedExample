@@ -21,4 +21,8 @@ struct Constants {
     struct UserInfoKey {
         static let imageLoadingFeedKey = "imageLoadingFeedKey"
     }
+    
+    struct SegueIdentifier {
+        static let pushImageDetailsSegue = "pushImageDetailsSegue"
+    }
 }
