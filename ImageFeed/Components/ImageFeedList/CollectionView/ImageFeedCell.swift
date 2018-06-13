@@ -45,15 +45,6 @@ class ImageFeedCell: UICollectionViewCell, ImageFeedViewModelDelegate {
         return CGSize(width: estimatedImageSize.width, height: estimatedImageSize.height + gap + labelSize.height)
     }
     
-    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-        let labelAttributes: [NSAttributedStringKey: Any] = [NSAttributedStringKey.font: label.font]
-        let estimatedCellSize = ImageFeedCell.estimatedSize(forModel: self.viewModel,
-                                                            containerWidth: containerWidth,
-                                                            labelAttributes: labelAttributes)
-        layoutAttributes.size = estimatedCellSize
-        return layoutAttributes
-    }
-    
     func bind(viewModel: ImageFeedViewModel) {
         self.viewModel = viewModel
         viewModel.delegate = self

@@ -21,4 +21,21 @@ class ImageDetailsViewController: UIViewController {
         imageView.image = imageFeedVM.image
         descriptionLabel.text = imageFeedVM.imageFeed.description
     }
+    
+    override var traitCollection: UITraitCollection {
+        // Override traitCollection for iPad so that the size classes reflects its orientation
+        if UIDevice.current.userInterfaceIdiom != .pad {
+            return super.traitCollection
+        }
+        
+        let orientation = UIApplication.shared.statusBarOrientation
+        
+        if orientation.isPortrait {
+            return UITraitCollection(traitsFrom: [
+                    UITraitCollection(horizontalSizeClass: .compact),
+                    UITraitCollection(verticalSizeClass: .regular)
+                ])
+        }
+        return super.traitCollection
+    }
 }

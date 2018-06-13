@@ -24,10 +24,16 @@ class FeedListViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(imageStatusChangeNotification(_:)), name: Constants.NotificationName.imageLoaded, object: nil)
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        // Fixed crash on iOS 8
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
     func setupViews() {
         // Customize collection view
-        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.estimatedItemSize = CGSize(width: 100, height: 100)
+//        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+//        layout.estimatedItemSize = CGSize(width: 100, height: 100)
         if #available(iOS 10.0, *) {
             collectionView.refreshControl = refreshControl
         } else {
@@ -100,7 +106,7 @@ extension FeedListViewController {
     }
 }
 
-extension FeedListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension FeedListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -121,8 +127,19 @@ extension FeedListViewController: UICollectionViewDelegate, UICollectionViewData
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // Use the classic way to adapt iOS 8
+        let idx = indexPath.item
+        let vm = feedList[idx]
+        let size = ImageFeedCell.estimatedSize(forModel: vm, containerWidth: collectionView.frame.width, labelAttributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 17)])
+        return size
+    }
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        // The image is loaded only when the associated cell is about to display
         let idx = indexPath.item
         feedList[idx].loadImage()
     }
