@@ -11,7 +11,7 @@ import UIKit
 class ImageDetailsViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionTextView: UITextView!
     
     var imageFeedVM: ImageFeedViewModel!
     
@@ -19,7 +19,7 @@ class ImageDetailsViewController: UIViewController {
         super.viewDidLoad()
         title = imageFeedVM.imageFeed.title
         imageView.image = imageFeedVM.image
-        descriptionLabel.text = imageFeedVM.imageFeed.description
+        descriptionTextView.text = imageFeedVM.imageFeed.description
     }
     
     override var traitCollection: UITraitCollection {
