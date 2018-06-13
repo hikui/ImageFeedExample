@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// RequestFactory creates URLSessionTasks
 class RequestFactory {
     static func commonRequestTaskWithParser<ParserType: ResponseParser>(session: URLSession,
                                                                         url: URL,
@@ -22,11 +23,24 @@ class RequestFactory {
         })
     }
     
+    /// Get feed list
+    ///
+    /// - Parameters:
+    ///   - session: URLSession object
+    ///   - then: callback with specified parser as parameter
+    /// - Returns: URLSessionTask
     static func feedListRequestTask(session: URLSession,
                                     then:@escaping ((ImageFeedResponseParser) -> Void)) -> URLSessionTask {
         return commonRequestTaskWithParser(session: session, url: Constants.Networking.feedURL, then: then)
     }
     
+    /// Download an image
+    ///
+    /// - Parameters:
+    ///   - session: URLSession object
+    ///   - imageURL: image url to download
+    ///   - then: callback
+    /// - Returns: URLSessionTask
     static func imageBodyRequestTask(session: URLSession,
                                      imageURL: URL,
                                      then:@escaping ((ImageBodyResponseParser) -> Void)) -> URLSessionTask {

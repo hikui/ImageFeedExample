@@ -8,6 +8,8 @@
 
 import Foundation
 
+/// Parser protocol used to generalise parse operations
+/// @See RequestFactory for usage
 protocol ResponseParser {
     associatedtype ResultType
     
@@ -22,12 +24,17 @@ protocol ResponseParser {
 }
 
 extension ResponseParser {
+    
+    /// Check if the request has failed
+    ///
+    /// - Throws: system network error or customized NetworkError
     func checkResponse() throws {
         if let error = error {
             throw error
         }
         
         if let response = response as? HTTPURLResponse {
+            // We need to check the status code
             if response.statusCode >= 400 {
                 throw NetworkError.failureStatusCode(status: response.statusCode, data: data)
             }
@@ -35,6 +42,7 @@ extension ResponseParser {
     }
 }
 
+/// Base class that implements the basic instance valuables and the initializer
 class BaseResponseParser<T>: ResponseParser {
     var result: T?
     var response: URLResponse?
@@ -48,6 +56,6 @@ class BaseResponseParser<T>: ResponseParser {
     }
     
     func parse() {
-        // Implemented in children classes
+        // Implemented in sub classes
     }
 }

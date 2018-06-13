@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// View controller that displays the feed list
 class FeedListViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -31,9 +32,6 @@ class FeedListViewController: UIViewController {
     }
     
     func setupViews() {
-        // Customize collection view
-//        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-//        layout.estimatedItemSize = CGSize(width: 100, height: 100)
         if #available(iOS 10.0, *) {
             collectionView.refreshControl = refreshControl
         } else {
@@ -49,12 +47,19 @@ class FeedListViewController: UIViewController {
             targetViewController.imageFeedVM = cell.viewModel
         }
     }
+    
+    deinit {
+        // Cancel loading when the controller deallocates
+        feedList.forEach { $0.cancelLoading() }
+    }
 }
 
 // Mark: - Actions
 extension FeedListViewController {
     func displayError(error: Error) {
-        
+        let alertController = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
     
     func reloadCollectionView() {
@@ -106,6 +111,7 @@ extension FeedListViewController {
     }
 }
 
+// MARK: - CollectionView delegates and data source
 extension FeedListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -134,7 +140,7 @@ extension FeedListViewController: UICollectionViewDelegate, UICollectionViewData
         // Use the classic way to adapt iOS 8
         let idx = indexPath.item
         let vm = feedList[idx]
-        let size = ImageFeedCell.estimatedSize(forModel: vm, containerWidth: collectionView.frame.width, labelAttributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 17)])
+        let size = ImageFeedCell.estimatedSize(forModel: vm, containerWidth: collectionView.frame.width)
         return size
     }
 

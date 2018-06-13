@@ -8,10 +8,12 @@
 
 import UIKit
 
+/// Delegate used to notify the change of VM's state
 protocol ImageFeedViewModelDelegate {
     func viewModelDidChangeStatus(_ viewModel: ImageFeedViewModel)
 }
 
+/// ViewModel for a single Image
 class ImageFeedViewModel {
     
     enum LoadingStatus {
@@ -24,11 +26,11 @@ class ImageFeedViewModel {
     var imageFeed: ImageFeed
     var loadingStatus = LoadingStatus.notStarted {
         didSet {
-            DispatchQueue.main.async {
-                self.delegate?.viewModelDidChangeStatus(self)
-            }
+            self.delegate?.viewModelDidChangeStatus(self)
         }
     }
+    
+    // The loaded image will go here
     var image: UIImage?
     
     var delegate: ImageFeedViewModelDelegate?
@@ -41,6 +43,7 @@ class ImageFeedViewModel {
     
     func loadImage() {
         if loadingStatus != .notStarted {
+            // Skip if it's alrady loading
             return
         }
         

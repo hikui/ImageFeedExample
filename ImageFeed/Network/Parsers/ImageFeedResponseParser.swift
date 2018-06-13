@@ -8,8 +8,11 @@
 
 import Foundation
 
+/// Parser to parse the image feed list response
 class ImageFeedResponseParser: BaseResponseParser<[ImageFeed]> {
     
+    /// Parse and throws exception
+    /// This makes error handling easier
     func parseWithThrow() throws {
         try checkResponse()
         
@@ -17,7 +20,9 @@ class ImageFeedResponseParser: BaseResponseParser<[ImageFeed]> {
             throw NetworkError.emptyBody
         }
         
-        // Be careful about the encoding
+        // Be careful about the encoding.
+        // The file was sent as isoLatin1, but JSONSerialization only supports UTF8
+        // Here I re-encoded the data to be utf-8
         guard let iso = String(data: data, encoding: .isoLatin1), let utf8Data = iso.data(using: .utf8) else {
             throw NetworkError.invalidBody
         }

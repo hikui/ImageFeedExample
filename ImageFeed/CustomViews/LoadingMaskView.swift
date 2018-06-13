@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A helper view that masks a view when loading is taking place
 class LoadingMaskView: UIView {
     var activityIndicator: UIActivityIndicatorView
     
@@ -24,16 +25,24 @@ class LoadingMaskView: UIView {
     func setupSubviews() {
         addSubview(activityIndicator)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Make it center
         NSLayoutConstraint(item: activityIndicator, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0).isActive = true
         NSLayoutConstraint(item: activityIndicator, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0.0).isActive = true
         activityIndicator.startAnimating()
     }
     
+    /// Display a LoadingMaskView on a view
+    ///
+    /// - Parameter view: the view in which the mask will be displayed
     class func showIn(view: UIView) {
         let loadingView = LoadingMaskView(frame: view.bounds)
         view.addSubview(loadingView)
     }
     
+    /// Remove all mask views from a view
+    ///
+    /// - Parameter view: the parent view
     class func removeFrom(view: UIView) {
         for subview in view.subviews {
             if subview is LoadingMaskView {

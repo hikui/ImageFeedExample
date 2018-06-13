@@ -8,11 +8,15 @@
 
 import UIKit
 
+/// Cell that displays an image and its title
 class ImageFeedCell: UICollectionViewCell, ImageFeedViewModelDelegate {
     
     static let defaultIdentifier = "ImageFeedCell"
     static let defaultImageSize = CGSize(width: 170, height: 170)
+    
+    // The gap between the label and the image view
     static let gapImageView = CGFloat(5)
+    static let defaultTitleFont = UIFont.systemFont(ofSize: 17)
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
@@ -23,12 +27,18 @@ class ImageFeedCell: UICollectionViewCell, ImageFeedViewModelDelegate {
     
     private var isLayoutUpdated = false
     
+    /// Method to esitmate the cell size
+    ///
+    /// - Parameters:
+    ///   - viewModel: associated model
+    ///   - containerWidth: the width of UICollectionView
+    /// - Returns: Estimated cell size
     static func estimatedSize(forModel viewModel: ImageFeedViewModel,
-                              containerWidth: CGFloat,
-                              labelAttributes: [NSAttributedStringKey:Any]?) -> CGSize {
+                              containerWidth: CGFloat) -> CGSize {
         var estimatedImageSize = ImageFeedCell.defaultImageSize
         if let image = viewModel.image, viewModel.loadingStatus == .succeeded {
             estimatedImageSize = image.size
+            // If image width is too large, use the container's width
             if estimatedImageSize.width > containerWidth {
                 estimatedImageSize.width = containerWidth
                 estimatedImageSize.height = ceil(containerWidth / image.size.width * estimatedImageSize.height)
@@ -36,8 +46,11 @@ class ImageFeedCell: UICollectionViewCell, ImageFeedViewModelDelegate {
         }
         
         let gap = gapImageView
+        
+        // Estimate the label size
         var labelSize = CGSize(width: estimatedImageSize.width, height: 20)
         if let text = viewModel.imageFeed.title {
+            let labelAttributes: [NSAttributedStringKey: Any] = [NSAttributedStringKey.font: defaultTitleFont]
             let boundingRect = NSString(string: text).boundingRect(with: CGSize(width: estimatedImageSize.width, height: 999), options: .usesLineFragmentOrigin, attributes: labelAttributes, context: nil)
             labelSize.height = ceil(boundingRect.height)
         }
@@ -68,6 +81,7 @@ class ImageFeedCell: UICollectionViewCell, ImageFeedViewModelDelegate {
         }
     }
     
+    // Show the image. If loading failed, show the error image
     func updateImage() {
         imageView.image = nil
         isLayoutUpdated = false

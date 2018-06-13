@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Parser to parse image
 class ImageBodyResponseParser: BaseResponseParser<UIImage> {
     func parseWithThrow() throws {
         try checkResponse()

@@ -25,6 +25,7 @@
 		466D820220D10F8100DA89DA /* ResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D820120D10F8100DA89DA /* ResponseParser.swift */; };
 		466D820420D1119400DA89DA /* ImageFeedResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D820320D1119400DA89DA /* ImageFeedResponseParser.swift */; };
 		466D820620D1146700DA89DA /* ImageBodyResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D820520D1146700DA89DA /* ImageBodyResponseParser.swift */; };
+		466D820A20D122E700DA89DA /* ScaledHeightImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D820920D122E700DA89DA /* ScaledHeightImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		466D820120D10F8100DA89DA /* ResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseParser.swift; sourceTree = "<group>"; };
 		466D820320D1119400DA89DA /* ImageFeedResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFeedResponseParser.swift; sourceTree = "<group>"; };
 		466D820520D1146700DA89DA /* ImageBodyResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBodyResponseParser.swift; sourceTree = "<group>"; };
+		466D820920D122E700DA89DA /* ScaledHeightImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaledHeightImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				466D81FE20D0AB9200DA89DA /* LoadingMaskView.swift */,
+				466D820920D122E700DA89DA /* ScaledHeightImageView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				466D81E220CFB6EA00DA89DA /* RequestFactory.swift in Sources */,
 				466D81EE20CFBBF300DA89DA /* ImageFeed.swift in Sources */,
 				466D81E820CFB9AD00DA89DA /* FeedListViewController.swift in Sources */,
+				466D820A20D122E700DA89DA /* ScaledHeightImageView.swift in Sources */,
 				466D81BD20CFB18100DA89DA /* AppDelegate.swift in Sources */,
 				466D820220D10F8100DA89DA /* ResponseParser.swift in Sources */,
 				466D820420D1119400DA89DA /* ImageFeedResponseParser.swift in Sources */,

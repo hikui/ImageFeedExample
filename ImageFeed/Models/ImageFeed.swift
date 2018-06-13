@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Model that represents a single data row
 struct ImageFeed {
     var title: String?
     var description: String?

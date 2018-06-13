@@ -127,7 +127,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHh-SZ-ox4" userLabel="HelperView">
                                 <rect key="frame" x="16" y="32" width="448" height="192"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="NHh-SZ-ox4" secondAttribute="height" multiplier="7:3" id="SFa-Ur-kyT"/>
                                 </constraints>
@@ -142,7 +142,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="failed" translatesAutoresizingMaskIntoConstraints="NO" id="X1Z-8w-GHY">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="999" verticalCompressionResistancePriority="999" image="failed" translatesAutoresizingMaskIntoConstraints="NO" id="X1Z-8w-GHY" customClass="ScaledHeightImageView" customModule="ImageFeed" customModuleProvider="target">
                                 <rect key="frame" x="16" y="40" width="192" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="282" id="BLW-5y-fRD"/>
@@ -200,6 +200,9 @@
                             <constraint firstItem="NHh-SZ-ox4" firstAttribute="trailing" secondItem="WLi-3Y-mv4" secondAttribute="trailingMargin" id="o1I-3y-2X1"/>
                             <constraint firstItem="VX0-dZ-l1s" firstAttribute="top" secondItem="qNS-Uw-kpo" secondAttribute="bottom" id="x0y-UT-ERx"/>
                             <constraint firstItem="qNS-Uw-kpo" firstAttribute="top" secondItem="wbB-rH-VB8" secondAttribute="bottom" id="xtH-dv-lit"/>
+                            <constraint firstItem="VX0-dZ-l1s" firstAttribute="top" relation="greaterThanOrEqual" secondItem="X1Z-8w-GHY" secondAttribute="bottom" constant="80" id="yhh-Pv-iT6">
+                                <variation key="heightClass=compact" constant="0.0"/>
+                            </constraint>
                             <constraint firstAttribute="trailing" secondItem="qNS-Uw-kpo" secondAttribute="trailing" id="yu8-5r-vcY"/>
                         </constraints>
                         <variation key="default">
@@ -225,6 +228,7 @@
                                 <exclude reference="yu8-5r-vcY"/>
                                 <exclude reference="gZO-mk-6oz"/>
                                 <exclude reference="x0y-UT-ERx"/>
+                                <exclude reference="yhh-Pv-iT6"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
@@ -239,6 +243,7 @@
                                 <include reference="jdj-rh-bBG"/>
                                 <include reference="xtH-dv-lit"/>
                                 <include reference="yu8-5r-vcY"/>
+                                <include reference="yhh-Pv-iT6"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
