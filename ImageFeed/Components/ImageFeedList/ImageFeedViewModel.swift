@@ -60,8 +60,8 @@ class ImageFeedViewModel {
             if parser.error != nil {
                strongSelf.loadingStatus = .failed
             } else {
-                strongSelf.loadingStatus = .succeeded
                 strongSelf.image = parser.result
+                strongSelf.loadingStatus = .succeeded
             }
         })
         
