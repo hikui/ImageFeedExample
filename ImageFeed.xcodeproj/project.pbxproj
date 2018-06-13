@@ -23,6 +23,7 @@
 		466D81F820CFDBBF00DA89DA /* ImageFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81F720CFDBBF00DA89DA /* ImageFeedCell.swift */; };
 		466D81FA20CFDBCF00DA89DA /* WaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81F920CFDBCF00DA89DA /* WaterfallLayout.swift */; };
 		466D81FC20CFDF0A00DA89DA /* ImageFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81FB20CFDF0A00DA89DA /* ImageFeedViewModel.swift */; };
+		466D81FF20D0AB9200DA89DA /* LoadingMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81FE20D0AB9200DA89DA /* LoadingMaskView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		466D81F720CFDBBF00DA89DA /* ImageFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFeedCell.swift; sourceTree = "<group>"; };
 		466D81F920CFDBCF00DA89DA /* WaterfallLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallLayout.swift; sourceTree = "<group>"; };
 		466D81FB20CFDF0A00DA89DA /* ImageFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFeedViewModel.swift; sourceTree = "<group>"; };
+		466D81FE20D0AB9200DA89DA /* LoadingMaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingMaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		466D81BB20CFB18100DA89DA /* ImageFeed */ = {
 			isa = PBXGroup;
 			children = (
+				466D81FD20D0AA2400DA89DA /* CustomViews */,
 				466D81F120CFC1FE00DA89DA /* Errors */,
 				466D81EC20CFBBCF00DA89DA /* Models */,
 				466D81E320CFB7D000DA89DA /* Constants */,
@@ -196,6 +199,14 @@
 				466D81F920CFDBCF00DA89DA /* WaterfallLayout.swift */,
 			);
 			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		466D81FD20D0AA2400DA89DA /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				466D81FE20D0AB9200DA89DA /* LoadingMaskView.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +319,7 @@
 				466D81F320CFC25200DA89DA /* NetworkError.swift in Sources */,
 				466D81F020CFC10600DA89DA /* ResponseParser.swift in Sources */,
 				466D81FA20CFDBCF00DA89DA /* WaterfallLayout.swift in Sources */,
+				466D81FF20D0AB9200DA89DA /* LoadingMaskView.swift in Sources */,
 				466D81FC20CFDF0A00DA89DA /* ImageFeedViewModel.swift in Sources */,
 				466D81F820CFDBBF00DA89DA /* ImageFeedCell.swift in Sources */,
 			);

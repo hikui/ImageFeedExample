@@ -11,29 +11,29 @@ import UIKit
 class FeedListViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    var refreshControl = UIRefreshControl()
     
-    var feedList = [ImageFeedViewModel]() {
-        didSet {
-            reloadCollectionView()
-        }
-    }
+    var feedList = [ImageFeedViewModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
         requestFeedList()
+        LoadingMaskView.showIn(view: self.view)
         
         NotificationCenter.default.addObserver(self, selector: #selector(imageStatusChangeNotification(_:)), name: Constants.NotificationName.imageLoaded, object: nil)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    func setupViews() {
+        // Customize collection view
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.estimatedItemSize = CGSize(width: 100, height: 100)
+        if #available(iOS 10.0, *) {
+            collectionView.refreshControl = refreshControl
+        } else {
+            collectionView.insertSubview(refreshControl, at: 0)
+        }
+        refreshControl.addTarget(self, action: #selector(refreshControlStartRefreshing), for: .valueChanged)
     }
 }
 
@@ -44,13 +44,23 @@ extension FeedListViewController {
     }
     
     func reloadCollectionView() {
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
+        collectionView.reloadData()
+        if feedList.count == 0 {
+            let label = UILabel()
+            label.text = "No feed available"
+            label.textAlignment = .center
+            collectionView.backgroundView = label
+        } else {
+            collectionView.backgroundView = nil
         }
     }
     
     @objc func imageStatusChangeNotification(_ notification: Notification) {
-        collectionView.reloadData()
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    @objc func refreshControlStartRefreshing() {
+        requestFeedList()
     }
 }
 
@@ -61,19 +71,24 @@ extension FeedListViewController {
         let globalURLSession = (UIApplication.shared.delegate as! AppDelegate).globalURLSession
         let task = RequestFactory.feedListRequestTask(session: globalURLSession) { [weak self] (data, response, error) in
             guard let strongSelf = self else { return }
-            do {
-                let feeds = try ResponseParser.parseFeedList(data: data, response: response, error: error)
-                strongSelf.feedList = feeds.map { ImageFeedViewModel(imageFeed: $0) }
-                // Test
-                var feed = ImageFeed(dict: [:])
-                feed.imageHref = "https://animeblurayuk.files.wordpress.com/2016/04/fate-stay-night-unlimited-blade-works-part1-dvd-screenshot-7.jpg"
-                feed.title = "very very long title very very long title very very long title very very long title very very long title very very long title very very long title very very long title very very long title very very long title very very long title very very long title very very long title "
-                strongSelf.feedList.append(ImageFeedViewModel(imageFeed: feed))
-            } catch {
-                strongSelf.displayError(error: error)
+            
+            DispatchQueue.main.async {
+                do {
+                    let feeds = try ResponseParser.parseFeedList(data: data, response: response, error: error)
+                    strongSelf.feedList = feeds.map { ImageFeedViewModel(imageFeed: $0) }
+                    strongSelf.feedListLoaded()
+                } catch {
+                    strongSelf.displayError(error: error)
+                }
             }
         }
         task.resume()
+    }
+    
+    func feedListLoaded() {
+        reloadCollectionView()
+        LoadingMaskView.removeFrom(view: self.view)
+        refreshControl.endRefreshing()
     }
 }
 

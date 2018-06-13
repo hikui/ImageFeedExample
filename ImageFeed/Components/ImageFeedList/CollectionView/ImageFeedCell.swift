@@ -16,6 +16,7 @@ class ImageFeedCell: UICollectionViewCell, ImageFeedViewModelDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var viewModel: ImageFeedViewModel!
     var containerWidth: CGFloat = -1
@@ -45,7 +46,7 @@ class ImageFeedCell: UICollectionViewCell, ImageFeedViewModelDelegate {
     }
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-        let labelAttributes = [NSAttributedStringKey.font: label.font]
+        let labelAttributes: [NSAttributedStringKey: Any] = [NSAttributedStringKey.font: label.font]
         let estimatedCellSize = ImageFeedCell.estimatedSize(forModel: self.viewModel,
                                                             containerWidth: containerWidth,
                                                             labelAttributes: labelAttributes)
@@ -56,14 +57,24 @@ class ImageFeedCell: UICollectionViewCell, ImageFeedViewModelDelegate {
     func bind(viewModel: ImageFeedViewModel) {
         self.viewModel = viewModel
         viewModel.delegate = self
+        updateStatus()
         updateImage()
         label.text = viewModel.imageFeed.title
     }
     
     func viewModelDidChangeStatus(_ viewModel: ImageFeedViewModel) {
         if viewModel !== self.viewModel { return }
+        updateStatus()
         updateImage()
         NotificationCenter.default.post(name: Constants.NotificationName.imageLoaded, object: self)
+    }
+    
+    func updateStatus() {
+        if viewModel.loadingStatus == .loading {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
     }
     
     func updateImage() {

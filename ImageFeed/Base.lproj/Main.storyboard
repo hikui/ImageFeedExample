@@ -41,41 +41,47 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="D0B-bl-LML">
-                                    <size key="itemSize" width="170" height="210"/>
+                                    <size key="itemSize" width="254" height="330"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageFeedCell" id="pZg-o8-JVK" customClass="ImageFeedCell" customModule="ImageFeed" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="170" height="210"/>
+                                        <rect key="frame" x="60.5" y="0.0" width="254" height="330"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="170" height="210"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="254" height="330"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" image="empty" translatesAutoresizingMaskIntoConstraints="NO" id="iC4-62-DjR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="170" height="184.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="254" height="200"/>
                                                     <color key="backgroundColor" red="0.2666666667" green="0.65098039220000004" blue="0.87450980389999999" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="999" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2s-Sx-IqU">
-                                                    <rect key="frame" x="0.0" y="189.5" width="170" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="205" width="254" height="125"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="w8t-P6-BO1">
+                                                    <rect key="frame" x="117" y="155" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="iC4-62-DjR" secondAttribute="trailing" id="1us-qd-w2d"/>
-                                            <constraint firstItem="S2s-Sx-IqU" firstAttribute="top" secondItem="iC4-62-DjR" secondAttribute="bottom" priority="998" constant="5" id="NAh-eO-8qS"/>
+                                            <constraint firstItem="w8t-P6-BO1" firstAttribute="centerX" secondItem="pZg-o8-JVK" secondAttribute="centerX" id="LNm-Bf-fF6"/>
+                                            <constraint firstItem="S2s-Sx-IqU" firstAttribute="top" secondItem="iC4-62-DjR" secondAttribute="bottom" constant="5" id="NAh-eO-8qS"/>
                                             <constraint firstAttribute="trailing" secondItem="S2s-Sx-IqU" secondAttribute="trailing" id="Qum-ma-PQG"/>
+                                            <constraint firstItem="w8t-P6-BO1" firstAttribute="centerY" secondItem="pZg-o8-JVK" secondAttribute="centerY" id="bMC-hn-ZXE"/>
                                             <constraint firstItem="iC4-62-DjR" firstAttribute="leading" secondItem="pZg-o8-JVK" secondAttribute="leading" id="g7g-5Q-0gR"/>
                                             <constraint firstAttribute="bottom" secondItem="S2s-Sx-IqU" secondAttribute="bottom" id="nRm-H6-e8A"/>
                                             <constraint firstItem="S2s-Sx-IqU" firstAttribute="leading" secondItem="pZg-o8-JVK" secondAttribute="leading" id="oBI-M0-y3N"/>
                                             <constraint firstItem="iC4-62-DjR" firstAttribute="top" secondItem="pZg-o8-JVK" secondAttribute="top" id="tzF-1T-9XC"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="w8t-P6-BO1" id="hQG-nd-JO4"/>
                                             <outlet property="imageView" destination="iC4-62-DjR" id="Aft-DV-fHj"/>
                                             <outlet property="label" destination="S2s-Sx-IqU" id="0ws-MV-JfP"/>
                                         </connections>
