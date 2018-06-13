@@ -51,17 +51,17 @@ class ImageFeedViewModel {
         }
         
         let globalURLSession = (UIApplication.shared.delegate as! AppDelegate).globalURLSession
-        self.loadingTask = RequestFactory.imageBodyRequestTask(session: globalURLSession,
-                                                               imageURL: url,
-                                                               completionHandler: { [weak self] (data, response, error) in
+        
+        self.loadingTask = RequestFactory.imageBodyRequestTask(session: globalURLSession, imageURL: url, then: { [weak self] (parser) in
             guard let strongSelf = self else { return }
-            do {
-                strongSelf.image = try ResponseParser.parseImageBody(data: data, response: response, error: error)
+            if parser.error != nil {
+               strongSelf.loadingStatus = .failed
+            } else {
                 strongSelf.loadingStatus = .succeeded
-            } catch {
-                strongSelf.loadingStatus = .failed
+                strongSelf.image = parser.result
             }
         })
+        
         self.loadingTask?.resume()
     }
     

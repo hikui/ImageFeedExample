@@ -83,19 +83,19 @@ extension FeedListViewController {
     func requestFeedList() {
         // This singleton is inevitable
         let globalURLSession = (UIApplication.shared.delegate as! AppDelegate).globalURLSession
-        let task = RequestFactory.feedListRequestTask(session: globalURLSession) { [weak self] (data, response, error) in
+        
+        let task = RequestFactory.feedListRequestTask(session: globalURLSession) { [weak self] (parser) in
             guard let strongSelf = self else { return }
-            
-            DispatchQueue.main.async {
-                do {
-                    let feeds = try ResponseParser.parseFeedList(data: data, response: response, error: error)
-                    strongSelf.feedList = feeds.map { ImageFeedViewModel(imageFeed: $0) }
-                    strongSelf.feedListLoaded()
-                } catch {
-                    strongSelf.displayError(error: error)
-                }
+            if let error = parser.error {
+                strongSelf.displayError(error: error)
+            } else if let feeds = parser.result {
+                strongSelf.feedList = feeds.map { ImageFeedViewModel(imageFeed: $0) }
+                strongSelf.feedListLoaded()
+            } else {
+                // Won't reach here
             }
         }
+
         task.resume()
     }
     

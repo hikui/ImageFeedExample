@@ -17,13 +17,14 @@
 		466D81E820CFB9AD00DA89DA /* FeedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81E720CFB9AD00DA89DA /* FeedListViewController.swift */; };
 		466D81EB20CFBA8300DA89DA /* ImageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81EA20CFBA8300DA89DA /* ImageDetailsViewController.swift */; };
 		466D81EE20CFBBF300DA89DA /* ImageFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81ED20CFBBF300DA89DA /* ImageFeed.swift */; };
-		466D81F020CFC10600DA89DA /* ResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81EF20CFC10600DA89DA /* ResponseParser.swift */; };
 		466D81F320CFC25200DA89DA /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81F220CFC25200DA89DA /* NetworkError.swift */; };
 		466D81F520CFCAD000DA89DA /* ResponseParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81F420CFCAD000DA89DA /* ResponseParserTests.swift */; };
 		466D81F820CFDBBF00DA89DA /* ImageFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81F720CFDBBF00DA89DA /* ImageFeedCell.swift */; };
-		466D81FA20CFDBCF00DA89DA /* WaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81F920CFDBCF00DA89DA /* WaterfallLayout.swift */; };
 		466D81FC20CFDF0A00DA89DA /* ImageFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81FB20CFDF0A00DA89DA /* ImageFeedViewModel.swift */; };
 		466D81FF20D0AB9200DA89DA /* LoadingMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D81FE20D0AB9200DA89DA /* LoadingMaskView.swift */; };
+		466D820220D10F8100DA89DA /* ResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D820120D10F8100DA89DA /* ResponseParser.swift */; };
+		466D820420D1119400DA89DA /* ImageFeedResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D820320D1119400DA89DA /* ImageFeedResponseParser.swift */; };
+		466D820620D1146700DA89DA /* ImageBodyResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D820520D1146700DA89DA /* ImageBodyResponseParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,13 +52,14 @@
 		466D81E720CFB9AD00DA89DA /* FeedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListViewController.swift; sourceTree = "<group>"; };
 		466D81EA20CFBA8300DA89DA /* ImageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailsViewController.swift; sourceTree = "<group>"; };
 		466D81ED20CFBBF300DA89DA /* ImageFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFeed.swift; sourceTree = "<group>"; };
-		466D81EF20CFC10600DA89DA /* ResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseParser.swift; sourceTree = "<group>"; };
 		466D81F220CFC25200DA89DA /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		466D81F420CFCAD000DA89DA /* ResponseParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseParserTests.swift; sourceTree = "<group>"; };
 		466D81F720CFDBBF00DA89DA /* ImageFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFeedCell.swift; sourceTree = "<group>"; };
-		466D81F920CFDBCF00DA89DA /* WaterfallLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallLayout.swift; sourceTree = "<group>"; };
 		466D81FB20CFDF0A00DA89DA /* ImageFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFeedViewModel.swift; sourceTree = "<group>"; };
 		466D81FE20D0AB9200DA89DA /* LoadingMaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingMaskView.swift; sourceTree = "<group>"; };
+		466D820120D10F8100DA89DA /* ResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseParser.swift; sourceTree = "<group>"; };
+		466D820320D1119400DA89DA /* ImageFeedResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFeedResponseParser.swift; sourceTree = "<group>"; };
+		466D820520D1146700DA89DA /* ImageBodyResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBodyResponseParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,8 +139,8 @@
 		466D81DD20CFB50400DA89DA /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				466D820020D10F3800DA89DA /* Parsers */,
 				466D81E120CFB6EA00DA89DA /* RequestFactory.swift */,
-				466D81EF20CFC10600DA89DA /* ResponseParser.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -196,7 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				466D81F720CFDBBF00DA89DA /* ImageFeedCell.swift */,
-				466D81F920CFDBCF00DA89DA /* WaterfallLayout.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -207,6 +208,16 @@
 				466D81FE20D0AB9200DA89DA /* LoadingMaskView.swift */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		466D820020D10F3800DA89DA /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				466D820120D10F8100DA89DA /* ResponseParser.swift */,
+				466D820320D1119400DA89DA /* ImageFeedResponseParser.swift */,
+				466D820520D1146700DA89DA /* ImageBodyResponseParser.swift */,
+			);
+			path = Parsers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,11 +325,12 @@
 				466D81EE20CFBBF300DA89DA /* ImageFeed.swift in Sources */,
 				466D81E820CFB9AD00DA89DA /* FeedListViewController.swift in Sources */,
 				466D81BD20CFB18100DA89DA /* AppDelegate.swift in Sources */,
+				466D820220D10F8100DA89DA /* ResponseParser.swift in Sources */,
+				466D820420D1119400DA89DA /* ImageFeedResponseParser.swift in Sources */,
+				466D820620D1146700DA89DA /* ImageBodyResponseParser.swift in Sources */,
 				466D81E520CFB7DF00DA89DA /* Constants.swift in Sources */,
 				466D81EB20CFBA8300DA89DA /* ImageDetailsViewController.swift in Sources */,
 				466D81F320CFC25200DA89DA /* NetworkError.swift in Sources */,
-				466D81F020CFC10600DA89DA /* ResponseParser.swift in Sources */,
-				466D81FA20CFDBCF00DA89DA /* WaterfallLayout.swift in Sources */,
 				466D81FF20D0AB9200DA89DA /* LoadingMaskView.swift in Sources */,
 				466D81FC20CFDF0A00DA89DA /* ImageFeedViewModel.swift in Sources */,
 				466D81F820CFDBBF00DA89DA /* ImageFeedCell.swift in Sources */,
