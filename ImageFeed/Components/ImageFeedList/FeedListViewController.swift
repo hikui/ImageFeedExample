@@ -60,6 +60,8 @@ extension FeedListViewController {
         let alertController = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
+        LoadingMaskView.removeFrom(view: self.view)
+        refreshControl.endRefreshing()
     }
     
     func reloadCollectionView() {
@@ -75,7 +77,11 @@ extension FeedListViewController {
     }
     
     @objc func imageStatusChangeNotification(_ notification: Notification) {
-        collectionView.collectionViewLayout.invalidateLayout()
+        guard let sender = notification.object as? ImageFeedCell else { return }
+        if sender.viewModel.loadingStatus == .succeeded {
+            // Invalidate layout when a picture is successfully loaded
+            collectionView.collectionViewLayout.invalidateLayout()
+        }
     }
     
     @objc func refreshControlStartRefreshing() {
