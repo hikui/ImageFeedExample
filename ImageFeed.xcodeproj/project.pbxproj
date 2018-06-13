@@ -26,6 +26,8 @@
 		466D820420D1119400DA89DA /* ImageFeedResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D820320D1119400DA89DA /* ImageFeedResponseParser.swift */; };
 		466D820620D1146700DA89DA /* ImageBodyResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D820520D1146700DA89DA /* ImageBodyResponseParser.swift */; };
 		466D820A20D122E700DA89DA /* ScaledHeightImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D820920D122E700DA89DA /* ScaledHeightImageView.swift */; };
+		466D820E20D139B200DA89DA /* ImageBodyResponseParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D820D20D139B200DA89DA /* ImageBodyResponseParserTests.swift */; };
+		466D821020D13CC000DA89DA /* ImageFeedResponseParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466D820F20D13CC000DA89DA /* ImageFeedResponseParserTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		466D820320D1119400DA89DA /* ImageFeedResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFeedResponseParser.swift; sourceTree = "<group>"; };
 		466D820520D1146700DA89DA /* ImageBodyResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBodyResponseParser.swift; sourceTree = "<group>"; };
 		466D820920D122E700DA89DA /* ScaledHeightImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaledHeightImageView.swift; sourceTree = "<group>"; };
+		466D820D20D139B200DA89DA /* ImageBodyResponseParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBodyResponseParserTests.swift; sourceTree = "<group>"; };
+		466D820F20D13CC000DA89DA /* ImageFeedResponseParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFeedResponseParserTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,8 @@
 				466D81D120CFB18300DA89DA /* ImageFeedTests.swift */,
 				466D81D320CFB18300DA89DA /* Info.plist */,
 				466D81F420CFCAD000DA89DA /* ResponseParserTests.swift */,
+				466D820D20D139B200DA89DA /* ImageBodyResponseParserTests.swift */,
+				466D820F20D13CC000DA89DA /* ImageFeedResponseParserTests.swift */,
 			);
 			path = ImageFeedTests;
 			sourceTree = "<group>";
@@ -346,7 +352,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				466D81D220CFB18300DA89DA /* ImageFeedTests.swift in Sources */,
+				466D820E20D139B200DA89DA /* ImageBodyResponseParserTests.swift in Sources */,
 				466D81F520CFCAD000DA89DA /* ResponseParserTests.swift in Sources */,
+				466D821020D13CC000DA89DA /* ImageFeedResponseParserTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
