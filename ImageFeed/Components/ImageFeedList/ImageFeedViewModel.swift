@@ -9,7 +9,7 @@
 import UIKit
 
 /// Delegate used to notify the change of VM's state
-protocol ImageFeedViewModelDelegate {
+protocol ImageFeedViewModelDelegate: class {
     func viewModelDidChangeStatus(_ viewModel: ImageFeedViewModel)
 }
 
@@ -33,7 +33,7 @@ class ImageFeedViewModel {
     // The loaded image will go here
     var image: UIImage?
     
-    var delegate: ImageFeedViewModelDelegate?
+    weak var delegate: ImageFeedViewModelDelegate?
     
     private var loadingTask: URLSessionTask?
     
